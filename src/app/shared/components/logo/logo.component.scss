@@ -1,0 +1,29 @@
+@import '../../../styles/index.scss';
+@import url('https://fonts.googleapis.com/css2?family=Carattere&display=swap');
+
+.logo{
+  .logo__image{
+    position: relative;
+    display: inline-block;
+
+    .logo__image--text{
+      color: var(--tertiary-color);
+      display: block;
+      font-family: "Carattere", cursive;
+      font-weight: 400 ;
+      font-size: 25px;
+      text-shadow: 0px 2px 2px var(--tertiary-color);
+      text-wrap: nowrap;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-text-stroke: 1px outside;
+      -webkit-text-stroke-color: var(--seccundary-color);
+    }
+
+    svg{
+      color: var(--seccundary-color);
+    }
+  }
+}
