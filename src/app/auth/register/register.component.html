@@ -1,23 +1,41 @@
 <section class="register">
   <div class="register__logo">
-    <app-logo [logoWidth]="'127px'" [logoHeight]="'90px'" [textSize]="'25px'" [title]="'REGISTRO'"></app-logo>
+    <app-logo [logoWidth]="'150px'" [logoHeight]="'110px'" [textSize]="'34px'" [title]="'REGISTRO'"></app-logo>
   </div>
 
   <div class="register__form">
-    <form action="">
+    <form class="register__form-container" action="" autocomplete="off">
 
-        <div class="form__inputs">
-          <label class="form__label" for="name">
-            <input class="form__input" type="text" id='name' placeholder=" ">
-            <span class="form__text">Nombre</span>
-            <span class="form__bar"></span>
+        <div class="register__form-inputs">
+          <label class="register__form-label" for="name">
+            <input class="register__form-input" type="text" id='name' placeholder=" ">
+            <span class="register__form-text">Nombre</span>
+            <span class="register__form-bar"></span>
+          </label>
+
+          <label class="register__form-label" for="email">
+            <input class="register__form-input" type="email" id='email' placeholder=" ">
+            <span class="register__form-text">Correo</span>
+            <span class="register__form-bar"></span>
+          </label>
+
+          <label class="register__form-label" for="password">
+            <input class="register__form-input" type="password" id='password' placeholder=" ">
+            <span class="register__form-text">Contraseña</span>
+            <span class="register__form-bar"></span>
+          </label>
+
+          <label class="register__form-label" for="confirm_password">
+            <input class="register__form-input" type="password" id='confirm_password' placeholder=" ">
+            <span class="register__form-text">Confirmar Contraseña</span>
+            <span class="register__form-bar"></span>
           </label>
         </div>
 
       <button type="button" class="register__form-button"><span> Crear Cuenta </span></button>
     </form>
 
-    <span class="register__form-text">¿Ya tienes una cuenta?... <span>Inicia Sesión</span></span>
+    <span class="register__form-helper-text">¿Ya tienes una cuenta?...<a>Iniciar Sesión</a></span>
 
   </div>
 </section>

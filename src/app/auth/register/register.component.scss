@@ -1,89 +1,135 @@
 @import '../../styles/index.scss';
 
 .register{
-  background-color: var(--primary-background-gradient);
+  background: var(--primary-background-gradient);
   width: 100%;
   height: 100vh;
-}
-
-.form{
-  border: solid red 1px;
-  width: min(350px, 90%);
-  padding: 20px;
-}
-
-.form__inputs{
-  display: grid;
-  gap: 10px;
-}
-
-
-.form__label{
-  width: 100%;
-  display: grid;
-  grid-template-areas: "input";
-  position: relative;
-}
-
-.form__input{
-  grid-area: input;
-  padding: 15px 10px 10px 15px;
-  border: none;
-  transition: border 100ms ease-in-out;
-  background-color: none;
-
-  &:focus{
-    outline: none;
-  }
-
-  &:before{
-    transition: all 300ms;
-  }
-
-}
-
-.form__bar{
-  position: relative;
-  display: block;
-  background-color: var(--seccundary-color);
-  height: 2.5px;
-}
-
-.form__bar:before, .form__bar:after{
-  content: '';
-  height: 2.5px;
-  width: 0;
-  position: absolute;
-  background-color: var(--tertiary-color);
-  transition: 0.3s ease-in-out all;
-}
-
-.form__bar:before{
-  left: 50%;
-}
-
-.form__bar:after{
-  right: 50%;
-}
-
-.form__input:focus ~ .form__bar:before,
-.form__input:focus ~ .form__bar:after {
-  width: 50%;
-}
-
-.form__text{
-  color: var(--seccundary-color);
-  grid-area: input;
   display: flex;
-  align-items: center;
-  margin-left: 10px;
-  width: min-content;
+  flex-direction: column;
+  justify-content: center;
 
-  transform-origin: left center;
-  transition: transform 300ms;
-}
+  .register__logo{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
 
-.form__input:focus + .form__text,
-.form__input:not(:placeholder-shown) + .form__text{
-  transform: translateY(-50%) scale(.9);
+  .register__form{
+    width: min(350px, 90%);
+    padding: 20px;
+    margin: 0px auto;
+    text-align: center;
+    display: grid;
+    gap: 15px;
+
+    .register__form-container{
+      display: grid;
+      gap: 15px;
+    }
+
+    .register__form-inputs{
+      display: grid;
+      gap: 20px;
+    }
+
+    .register__form-label{
+      width: 100%;
+      display: grid;
+      grid-template-areas: "input";
+      position: relative;
+      font-size: 20px;
+    }
+
+    .register__form-input{
+      grid-area: input;
+      padding: 15px 20px;
+      border: none;
+      transition: border 100ms ease-in-out;
+      background-color: transparent;
+      background: transparent;
+      transition: all 300ms;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .register__form-bar{
+      position: relative;
+      display: block;
+      background-color: var(--secondary-color);
+      height: 2.5px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .register__form-bar:before, .register__form-bar:after{
+      content: '';
+      height: 2.5px;
+      width: 0;
+      position: absolute;
+      background-color: var(--tertiary-color);
+      transition: 0.3s ease-in-out all;
+    }
+
+    .register__form-bar:before{
+      left: 50%;
+    }
+
+    .register__form-bar:after{
+      right: 50%;
+    }
+
+    .register__form-input:focus ~ .register__form-bar:before,
+    .register__form-input:focus ~ .register__form-bar:after {
+      width: 50%;
+    }
+
+    .register__form-text{
+      color: var(--secondary-color);
+      grid-area: input;
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+      width: max-content;
+      cursor: text;
+
+      transform-origin: left center;
+      transition: transform 300ms;
+    }
+
+    .register__form-input:focus + .register__form-text,
+    .register__form-input:not(:placeholder-shown) + .register__form-text{
+      transform: translateY(-50%) scale(.9);
+    }
+
+    .register__form-button{
+      background-color: var(--secondary-color);
+      color: var(--color-white);
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      font-size: 16px;
+
+      &:hover{
+        opacity: 0.9;
+        cursor: pointer;
+      }
+    }
+
+    .register__form-helper-text{
+      font-size: 18px;
+
+      a{
+        color: var(--secondary-color);
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+
+  }
 }
