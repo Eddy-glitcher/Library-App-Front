@@ -1,0 +1,89 @@
+@import '../../styles/index.scss';
+
+.register{
+  background-color: var(--primary-background-gradient);
+  width: 100%;
+  height: 100vh;
+}
+
+.form{
+  border: solid red 1px;
+  width: min(350px, 90%);
+  padding: 20px;
+}
+
+.form__inputs{
+  display: grid;
+  gap: 10px;
+}
+
+
+.form__label{
+  width: 100%;
+  display: grid;
+  grid-template-areas: "input";
+  position: relative;
+}
+
+.form__input{
+  grid-area: input;
+  padding: 15px 10px 10px 15px;
+  border: none;
+  transition: border 100ms ease-in-out;
+  background-color: none;
+
+  &:focus{
+    outline: none;
+  }
+
+  &:before{
+    transition: all 300ms;
+  }
+
+}
+
+.form__bar{
+  position: relative;
+  display: block;
+  background-color: var(--seccundary-color);
+  height: 2.5px;
+}
+
+.form__bar:before, .form__bar:after{
+  content: '';
+  height: 2.5px;
+  width: 0;
+  position: absolute;
+  background-color: var(--tertiary-color);
+  transition: 0.3s ease-in-out all;
+}
+
+.form__bar:before{
+  left: 50%;
+}
+
+.form__bar:after{
+  right: 50%;
+}
+
+.form__input:focus ~ .form__bar:before,
+.form__input:focus ~ .form__bar:after {
+  width: 50%;
+}
+
+.form__text{
+  color: var(--seccundary-color);
+  grid-area: input;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  width: min-content;
+
+  transform-origin: left center;
+  transition: transform 300ms;
+}
+
+.form__input:focus + .form__text,
+.form__input:not(:placeholder-shown) + .form__text{
+  transform: translateY(-50%) scale(.9);
+}
