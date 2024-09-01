@@ -12,5 +12,6 @@ export class LogoComponent {
   @Input() logoWidth?: string;
   @Input() logoHeight?: string;
   @Input() textSize?: string;
+  @Input() title?: string;
 
 }
