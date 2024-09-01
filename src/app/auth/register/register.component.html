@@ -1,1 +1,23 @@
-<p>register works!</p>
+<section class="register">
+  <div class="register__logo">
+    <app-logo [logoWidth]="'127px'" [logoHeight]="'90px'" [textSize]="'25px'"></app-logo>
+  </div>
+
+  <div class="register__form">
+    <form action="">
+
+        <div class="form__inputs">
+          <label class="form__label" for="name">
+            <input class="form__input" type="text" id='name' placeholder=" ">
+            <span class="form__text">Nombre</span>
+            <span class="form__bar"></span>
+          </label>
+        </div>
+
+      <button type="button" class="register__form-button"><span> Crear Cuenta </span></button>
+    </form>
+
+    <span class="register__form-text">¿Ya tienes una cuenta?... <span>Inicia Sesión</span></span>
+
+  </div>
+</section>
