@@ -25,5 +25,15 @@
     svg{
       color: var(--secondary-color);
     }
+
+  }
+
+  .logo__title{
+    font-size: 25px;
+    color: var(--secondary-color);
+    text-shadow: -1px -1px 0px var(--tertiary-color),
+                -1px 1px 0px var(--tertiary-color),
+                1px 1px 0px var(--tertiary-color),
+                1px -1px 0px var(--tertiary-color);
   }
 }
