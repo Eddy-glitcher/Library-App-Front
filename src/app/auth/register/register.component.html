@@ -19,17 +19,24 @@
             <span class="register__form-bar"></span>
           </label>
 
-          <label class="register__form-label" for="password">
-            <input class="register__form-input" type="password" id='password' placeholder=" ">
-            <span class="register__form-text">Contraseña</span>
-            <span class="register__form-bar"></span>
-          </label>
+          <div class="register__form-container">
+            <label class="register__form-label" for="password">
+              <input class="register__form-input" type="password" id='password' placeholder=" ">
+              <span class="register__form-text">Contraseña</span>
+              <span class="register__form-bar"></span>
+            </label>
+            <i class="fa-regular fa-eye-slash register__form-icon" (click)="showPassword('password')"></i>
+          </div>
 
-          <label class="register__form-label" for="confirm_password">
-            <input class="register__form-input" type="password" id='confirm_password' placeholder=" ">
-            <span class="register__form-text">Confirmar Contraseña</span>
-            <span class="register__form-bar"></span>
-          </label>
+          <div class="register__form-container">
+            <label class="register__form-label" for="confirm_password">
+              <input class="register__form-input" type="password" id='confirm_password' placeholder=" ">
+              <span class="register__form-text">Confirmar Contraseña</span>
+              <span class="register__form-bar"></span>
+            </label>
+            <i class="fa-regular fa-eye-slash register__form-icon" (click)="showPassword('confirm_password')"></i>
+          </div>
+
         </div>
 
       <button type="button" class="register__form-button"><span> Crear Cuenta </span></button>
