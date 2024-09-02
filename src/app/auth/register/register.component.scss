@@ -101,6 +101,25 @@
       transform: translateY(-50%) scale(.9);
     }
 
+    .register__form-container{
+      position: relative;
+      display: grid;
+      align-items: center;
+
+    }
+
+    .register__form-icon{
+      cursor: pointer;
+      position: absolute;
+      right: 0%;
+      font-size: 18px;
+      color: var(--secondary-color-soft);
+
+      &:hover{
+        opacity: 0.7;
+      }
+    }
+
     .register__form-button{
       background-color: var(--secondary-color);
       color: var(--color-white);
