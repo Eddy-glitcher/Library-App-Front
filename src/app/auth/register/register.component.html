@@ -4,24 +4,24 @@
   </div>
 
   <div class="register__form">
-    <form class="register__form-container" action="" autocomplete="off">
+    <form class="register__form-container" action="" autocomplete="off" [formGroup]="registerForm">
 
         <div class="register__form-inputs">
           <label class="register__form-label" for="name">
-            <input class="register__form-input" type="text" id='name' placeholder=" ">
+            <input class="register__form-input" type="text" id='name' placeholder=" " formControlName="name">
             <span class="register__form-text">Nombre</span>
             <span class="register__form-bar"></span>
           </label>
 
           <label class="register__form-label" for="email">
-            <input class="register__form-input" type="email" id='email' placeholder=" ">
+            <input class="register__form-input" type="email" id='email' placeholder=" " formControlName="email">
             <span class="register__form-text">Correo</span>
             <span class="register__form-bar"></span>
           </label>
 
           <div class="register__form-container">
             <label class="register__form-label" for="password">
-              <input class="register__form-input" type="password" id='password' placeholder=" ">
+              <input class="register__form-input" type="password" id='password' placeholder=" " formControlName="password">
               <span class="register__form-text">Contraseña</span>
               <span class="register__form-bar"></span>
             </label>
@@ -30,7 +30,7 @@
 
           <div class="register__form-container">
             <label class="register__form-label" for="confirm_password">
-              <input class="register__form-input" type="password" id='confirm_password' placeholder=" ">
+              <input class="register__form-input" type="password" id='confirm_password' placeholder=" " formControlName="confirm_password">
               <span class="register__form-text">Confirmar Contraseña</span>
               <span class="register__form-bar"></span>
             </label>
