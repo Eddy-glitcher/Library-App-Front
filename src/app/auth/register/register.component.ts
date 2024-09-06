@@ -2,10 +2,11 @@ import { Component, ElementRef, inject, Renderer2 } from '@angular/core';
 import { LogoComponent } from '../../shared/components/logo/logo.component';
 import {FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 import { FormValidatorService } from '../../shared/services/form-validator.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ LogoComponent, ReactiveFormsModule ],
+  imports: [ LogoComponent, ReactiveFormsModule, CommonModule ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -50,4 +51,7 @@ export class RegisterComponent {
     if (controlErrors?.['passwordIncorrect']) return `Las contraseñas deben cohinsidir`;
   }
 
+  showPasswordIcon(control : string) : boolean{
+    return this.registerForm.get(control)?.value.length !== 0;
+  }
 }

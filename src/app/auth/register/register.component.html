@@ -12,7 +12,7 @@
             <span class="register__form-text">Nombre</span>
             <span class="register__form-bar"></span>
 
-            @if (formValidator('name')) { <span>{{formFieldValidator('name')}}</span> }
+            @if (formValidator('name')) { <span class="register__form-error-text">{{formFieldValidator('name')}}</span> }
           </label>
 
           <label class="register__form-label" for="email">
@@ -20,33 +20,33 @@
             <span class="register__form-text">Correo</span>
             <span class="register__form-bar"></span>
 
-            @if (formValidator('email')) { <span>{{formFieldValidator('email')}}</span> }
+            @if (formValidator('email')) { <span class="register__form-error-text">{{formFieldValidator('email')}}</span> }
           </label>
 
           <div class="register__form-container">
             <label class="register__form-label" for="password">
               <input class="register__form-input" type="password" id='password' placeholder=" " formControlName="password">
               <span class="register__form-text">Contraseña</span>
+              @if (showPasswordIcon('password')) { <i class="fa-regular fa-eye-slash register__form-password-icon" (click)="showPassword('password')"></i> }
               <span class="register__form-bar"></span>
 
-              @if (formValidator('password')) { <span>{{formFieldValidator('password')}}</span> }
+              @if (formValidator('password')) { <span class="register__form-error-text">{{formFieldValidator('password')}}</span> }
             </label>
-            <i class="fa-regular fa-eye-slash register__form-icon" (click)="showPassword('password')"></i>
           </div>
 
           <div class="register__form-container">
             <label class="register__form-label" for="confirm_password">
               <input class="register__form-input" type="password" id='confirm_password' placeholder=" " formControlName="confirm_password">
               <span class="register__form-text">Confirmar Contraseña</span>
+
+              @if (showPasswordIcon('confirm_password')) { <i class="fa-regular fa-eye-slash register__form-password-icon" (click)="showPassword('confirm_password')"></i> }
               <span class="register__form-bar"></span>
 
-              @if (formValidator('confirm_password')) { <span>{{formFieldValidator('confirm_password')}}</span> }
+              @if (formValidator('confirm_password')) { <span class="register__form-error-text">{{formFieldValidator('confirm_password')}}</span> }
             </label>
-            <i class="fa-regular fa-eye-slash register__form-icon" (click)="showPassword('confirm_password')"></i>
           </div>
 
         </div>
-
       <button type="button" class="register__form-button"><span> Crear Cuenta </span></button>
     </form>
 
