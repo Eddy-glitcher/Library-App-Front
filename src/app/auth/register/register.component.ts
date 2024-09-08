@@ -54,4 +54,10 @@ export class RegisterComponent {
   showPasswordIcon(control : string) : boolean{
     return this.registerForm.get(control)?.value.length !== 0;
   }
+
+  registerUser(){
+    
+    if(this.registerForm.invalid) this.registerForm.markAllAsTouched();
+
+  }
 }

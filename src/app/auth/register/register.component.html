@@ -4,7 +4,7 @@
   </div>
 
   <div class="register__form">
-    <form class="register__form-container" action="" autocomplete="off" [formGroup]="registerForm">
+    <form class="register__form-container" action="" autocomplete="off" [formGroup]="registerForm" (ngSubmit)="registerUser()">
 
         <div class="register__form-inputs">
           <label class="register__form-label" for="name">
@@ -47,7 +47,7 @@
           </div>
 
         </div>
-      <button type="button" class="register__form-button"><span> Crear Cuenta </span></button>
+      <input type="submit" class="register__form-button" value="Crear Cuenta">
     </form>
 
     <span class="register__form-helper-text">¿Ya tienes una cuenta?...<a>Iniciar Sesión</a></span>
