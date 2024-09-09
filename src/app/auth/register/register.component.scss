@@ -86,6 +86,15 @@
       background-color: var(--color-error);
     }
 
+    .register__form-bar--error:before, .register__form-bar--error:after{
+      background-color: var(--color-red);
+    }
+
+    .register__form-input:focus ~ .register__form-bar--error:before,
+    .register__form-input:focus ~ .register__form-bar--error:after {
+      width: 0%;
+    }
+
     .register__form-text{
       color: var(--secondary-color);
       grid-area: input;
@@ -114,10 +123,16 @@
       height: max-content;
       font-size: 18px;
       color: var(--secondary-color-soft);
+      transition: transform 100ms ease-in-out;
 
       &:hover{
         opacity: 0.7;
       }
+
+      &:active{
+        transform: scale(0.9);
+      }
+
     }
 
     .register__form-text--error{

@@ -29,7 +29,9 @@ export class RegisterComponent {
     validators : this._formValidatorSvc.formEqualPasswordsValidator('password', 'confirm_password')
   });
 
-  showPassword(id : string): void{
+  showPassword(id : string, event : any): void{
+    event.preventDefault();
+
     this._showPassword = !this._showPassword;
     const element = this._elementRef.nativeElement.querySelector(`#${id}`);
     this._showPassword ? this._renderer.setProperty(element, 'type', 'text') : this._renderer.setProperty(element, 'type', 'password');
