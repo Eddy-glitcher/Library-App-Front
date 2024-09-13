@@ -22,22 +22,20 @@
     display: grid;
     gap: 15px;
 
-    .register__form-container{
+    .register__form-container, .register__form-inputs{
       display: grid;
       gap: 15px;
     }
 
     .register__form-inputs{
-      display: grid;
       gap: 20px;
     }
 
     .register__form-label{
       width: 100%;
+      position: relative;
       display: grid;
       grid-template-areas: "input";
-      position: relative;
-      font-size: 20px;
     }
 
     .register__form-input{
@@ -103,9 +101,9 @@
       margin-left: 10px;
       width: max-content;
       cursor: text;
-
+      font-size: clamp(1rem, 0.5rem + 1.6vw, 1.5rem);
       transform-origin: left center;
-      transition: transform 300ms;
+      transition: transform 300ms ease-in-out;
     }
 
     .register__form-input:focus + .register__form-text,
@@ -117,11 +115,11 @@
       cursor: pointer;
       grid-area: input;
       display: flex;
-      margin: auto 0px;
       justify-self: end;
+      margin: auto 0px;
       width: max-content;
       height: max-content;
-      font-size: 18px;
+      font-size: clamp(1rem, 0.87rem + 0.416vw, 1.13rem);
       color: var(--secondary-color-soft);
       transition: transform 100ms ease-in-out;
 
@@ -140,17 +138,11 @@
     }
 
     .register__form-error-text{
-      font-size: 16px;
+      font-size: clamp(1rem, 0.87rem + 0.416vw, 1.1rem);
       color: var(--color-error);
       text-align: left;
       margin: 5px 0px 0px 5px;
       position: relative;
-    }
-
-    .register__form-container{
-      position: relative;
-      display: grid;
-      align-items: center;
     }
 
     .register__form-button{
@@ -159,9 +151,8 @@
       width: 100%;
       padding: 10px;
       border-radius: 5px;
-      outline: none;
       border: none;
-      font-size: 16px;
+      font-size: clamp(1rem, 0.87rem + 0.416vw, 1.13rem);
       transition: transform 100ms ease-in-out;
 
       &:hover{
@@ -175,7 +166,7 @@
     }
 
     .register__form-helper-text{
-      font-size: 18px;
+      font-size: clamp(1rem, 0.87rem + 0.416vw, 1.13rem);
 
       a{
         color: var(--secondary-color);
