@@ -5,7 +5,7 @@
   gap: $gap;
 }
 
-@mixin flex-layout($direction : auto, $justify: center, $algin : center){
+@mixin flex-layout($direction : auto, $justify: center, $align : center){
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
