@@ -1,5 +1,6 @@
 @import '../../styles/themes/index.scss';
 @import '../../styles/mixins/index.scss';
+@import '../../styles/typography/index.scss';
 
 .register{
   background: var(--primary-background-gradient);
@@ -41,7 +42,6 @@
       transition: border 100ms ease-in-out;
       background-color: transparent;
       transition: all 300ms;
-      font-size: 16px;
       outline: none;
     }
 
@@ -96,7 +96,7 @@
       margin-left: 10px;
       width: max-content;
       cursor: text;
-      font-size: clamp(1rem, 0.5rem + 1.6vw, 1.5rem);
+      font-size: clamp( $font-size-md , 0.5rem + 1.6vw, $font-size-lg);
       transform-origin: left center;
       transition: transform 300ms ease-in-out;
     }
@@ -114,7 +114,7 @@
       margin: auto 0px;
       width: max-content;
       height: max-content;
-      font-size: clamp(1rem, 0.87rem + 0.416vw, 1.13rem);
+      font-size: clamp($font-size-sm, 0.87rem + 0.416vw, $font-size-md);
       color: var(--secondary-color-soft);
       transition: transform 100ms ease-in-out;
 
@@ -133,7 +133,7 @@
     }
 
     .register__form-error-text{
-      font-size: clamp(1rem, 0.87rem + 0.416vw, 1.1rem);
+      font-size: clamp($font-size-sm, 0.87rem + 0.416vw, $font-size-md);
       color: var(--color-error);
       text-align: left;
       margin: 5px 0px 0px 5px;
@@ -147,7 +147,7 @@
       padding: 10px;
       border-radius: 5px;
       border: none;
-      font-size: clamp(1rem, 0.87rem + 0.416vw, 1.13rem);
+      font-size: clamp($font-size-sm, 0.87rem + 0.416vw, $font-size-md);
       transition: transform 100ms ease-in-out;
 
       &:hover{
@@ -161,7 +161,7 @@
     }
 
     .register__form-helper-text{
-      font-size: clamp(1rem, 0.87rem + 0.416vw, 1.13rem);
+      font-size: clamp($font-size-sm, 0.87rem + 0.416vw, $font-size-md);
 
       a{
         color: var(--secondary-color);
