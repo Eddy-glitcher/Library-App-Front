@@ -1,0 +1,25 @@
+@mixin form-bar-animation($color, $color-animation){
+  position: relative;
+  display: block;
+  background-color: $color;
+  height: 2.5px;
+  border-radius: 5px;
+  overflow: hidden;
+
+  &:before, &:after{
+    content: '';
+    height: 2.5px;
+    width: 0;
+    position: absolute;
+    background-color: $color-animation;
+    transition: 0.3s ease-in-out all;
+  }
+
+  &:before{
+    left: 50%;
+  }
+
+  &:after{
+    right: 50%;
+  }
+}
