@@ -53,29 +53,7 @@
     }
 
     .register__form-bar{
-      position: relative;
-      display: block;
-      background-color: var(--secondary-color);
-      height: 2.5px;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    .register__form-bar:before, .register__form-bar:after{
-      content: '';
-      height: 2.5px;
-      width: 0;
-      position: absolute;
-      background-color: var(--tertiary-color);
-      transition: 0.3s ease-in-out all;
-    }
-
-    .register__form-bar:before{
-      left: 50%;
-    }
-
-    .register__form-bar:after{
-      right: 50%;
+      @include form-bar-animation($color : var(--secondary-color), $color-animation : var(--tertiary-color) );
     }
 
     .register__form-input:focus ~ .register__form-bar:before,
