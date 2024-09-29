@@ -3,10 +3,11 @@ import { LogoComponent } from '../../shared/components/logo/logo.component';
 import {FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 import { FormValidatorService } from '../../shared/services/form-validator.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ LogoComponent, ReactiveFormsModule, CommonModule ],
+  imports: [ LogoComponent, ReactiveFormsModule, CommonModule, RouterModule ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
