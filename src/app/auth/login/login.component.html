@@ -1,0 +1,38 @@
+<section class="login">
+
+  <div class="login__container">
+
+    <div class="login__logo">
+      <app-logo [logoWidth]="'150px'" [logoHeight]="'110px'" [textSize]="'34px'" [title]="'LOGIN'"></app-logo>
+    </div>
+
+    <div class="login__form">
+      <form class="login__form-container" action="" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
+
+          <div class="login__form-inputs">
+            <label class="login__form-label" for="email">
+              <input class="login__form-input" type="email" id='email' placeholder=" " formControlName="email">
+              <span class="login__form-text" [ngClass]="formValidator('email') ? 'login__form-text--error' : '' " >Correo</span>
+              <span class="login__form-bar" [ngClass]="formValidator('email') ? 'login__form-bar--error' : ''"></span>
+
+              @if (formValidator('email')) { <span class="login__form-error-text">{{formFieldValidator('email')}}</span> }
+            </label>
+
+            <label class="login__form-label" for="password">
+              <input class="login__form-input" type="password" id='password' placeholder=" " formControlName="password">
+              <span class="login__form-text" [ngClass]="formValidator('password') ? 'login__form-text--error' : '' " >Contraseña</span>
+              @if (showPasswordIcon('password')) { <i class="fa-regular fa-eye-slash login__form-password-icon" (click)="showPassword('password', $event)"></i> }
+              <span class="login__form-bar" [ngClass]="formValidator('password') ? 'login__form-bar--error' : ''"></span>
+
+              @if (formValidator('password')) { <span class="login__form-error-text">{{formFieldValidator('password')}}</span> }
+            </label>
+          </div>
+        <input type="submit" class="login__form-button" value="Iniciar Sesión">
+      </form>
+
+      <span class="login__form-helper-text">Aún no tienes una cuenta?...<a [routerLink]="['/auth/register']"> Registrate </a></span>
+
+    </div>
+
+  </div>
+</section>
