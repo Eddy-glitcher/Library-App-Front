@@ -11,15 +11,13 @@
 
           <div class="login__form-inputs">
             <label class="login__form-label" for="email">
-              <input class="login__form-input" type="email" id='email' placeholder=" " formControlName="email">
+              <input class="login__form-input" type="email" id='email' placeholder=" " formControlName="email" (input)="hideFormErrors('password')">
               <span class="login__form-text" [ngClass]="formValidator('email') ? 'login__form-text--error' : '' " >Correo</span>
               <span class="login__form-bar" [ngClass]="formValidator('email') ? 'login__form-bar--error' : ''"></span>
-
-              @if (formValidator('email')) { <span class="login__form-error-text">{{formFieldValidator('email')}}</span> }
             </label>
 
             <label class="login__form-label" for="password">
-              <input class="login__form-input" type="password" id='password' placeholder=" " formControlName="password">
+              <input class="login__form-input" type="password" id='password' placeholder=" " formControlName="password" (input)="hideFormErrors('email')">
               <span class="login__form-text" [ngClass]="formValidator('password') ? 'login__form-text--error' : '' " >Contraseña</span>
               @if (showPasswordIcon('password')) { <i class="fa-regular fa-eye-slash login__form-password-icon" (click)="showPassword('password', $event)"></i> }
               <span class="login__form-bar" [ngClass]="formValidator('password') ? 'login__form-bar--error' : ''"></span>
