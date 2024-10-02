@@ -2,8 +2,9 @@ import { Component, ElementRef, inject, Renderer2 } from '@angular/core';
 import { LogoComponent } from '../../shared/components/logo/logo.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FormValidatorService } from '../../shared/services/form-validator.service';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../shared/services/auth.service';
+import { LoginErrorResponse } from '../../shared/interfaces/login-error-response';
 
 @Component({
   selector: 'app-login',
@@ -14,20 +15,49 @@ import { FormValidatorService } from '../../shared/services/form-validator.servi
 })
 export class LoginComponent {
 
-  private _renderer   = inject(Renderer2);
-  private _elementRef = inject(ElementRef);
+  private readonly _renderer   = inject(Renderer2);
+  private readonly _elementRef = inject(ElementRef);
+  private readonly _formBuilder  = inject(FormBuilder);
+  private readonly _router = inject(Router);
+  private readonly _authSvc = inject(AuthService);
+
   private _showPassword!: boolean;
 
-  private _formBuilder  = inject(FormBuilder);
-  private _formValidatorSvc = inject(FormValidatorService);
-
   loginForm : FormGroup = this._formBuilder.group({
-    email : ['', [Validators.required, Validators.pattern(this._formValidatorSvc.validEmail)]],
+    email : ['', Validators.required],
     password : ['', Validators.required]
   });
 
-  login(){
-    if(this.loginForm.invalid) this.loginForm.markAllAsTouched();
+  setFormError(control : string): void{
+    this.loginForm.get(control)?.setErrors({
+      authError : true
+    })
+  }
+
+  hideFormErrors(control : string){
+    const controlErrors = this.loginForm.get(control)?.errors;
+    if(controlErrors && controlErrors!['authError']){
+      this.loginForm.get(control)!.setErrors(null);
+    }
+  }
+
+  login() : void{
+
+    this.loginForm.markAllAsTouched();
+
+    if(this.loginForm.valid){
+      const {email, password} = this.loginForm.value;
+      this._authSvc.logIn(email, password).subscribe({
+        next: (resp: any)=>{
+          // this._router.navigateByUrl('/redirect....');
+        },
+        error: (error : LoginErrorResponse)=>{
+          this.setFormError('password');
+          this.setFormError('email');
+        },
+      });
+    }
+
   }
 
   showPassword(id : string, event : any): void{
@@ -45,9 +75,9 @@ export class LoginComponent {
   formFieldValidator(control : string): string | void{
     const controlErrors = this.loginForm.get(control)?.errors;
 
-    if(controlErrors?.['required']) return 'Este campo es requerido';
+    if(controlErrors?.['required']) return 'contraseña y correo requeridos';
 
-    if (controlErrors?.['pattern']) return `Formato de correo inválido`;
+    if (controlErrors?.['authError']) return `correo o contraseña incorrecta`;
   }
 
   showPasswordIcon(control : string) : boolean{
