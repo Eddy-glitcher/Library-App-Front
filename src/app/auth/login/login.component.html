@@ -22,7 +22,7 @@
               @if (showPasswordIcon('password')) { <i class="fa-regular fa-eye-slash login__form-password-icon" (click)="showPassword('password', $event)"></i> }
               <span class="login__form-bar" [ngClass]="formValidator('password') ? 'login__form-bar--error' : ''"></span>
 
-              @if (formValidator('password')) { <span class="login__form-error-text">{{formFieldValidator('password')}}</span> }
+              @if (formValidator('password') || formValidator('email')) { <span class="login__form-error-text">{{formFieldValidator('password') || formFieldValidator('email')}}</span> }
             </label>
           </div>
         <input type="submit" class="login__form-button" value="Iniciar Sesión">
