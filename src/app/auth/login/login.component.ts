@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validato
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
-import { LoginErrorResponse } from '../../shared/interfaces/login-error-response';
+import { ApiErrorResponse } from '../../shared/interfaces/api-error-response';
 
 @Component({
   selector: 'app-login',
@@ -51,7 +51,7 @@ export class LoginComponent {
         next: (resp: any)=>{
           // this._router.navigateByUrl('/redirect....');
         },
-        error: (error : LoginErrorResponse)=>{
+        error: (error : ApiErrorResponse)=>{
           this.setFormError('password');
           this.setFormError('email');
         },
