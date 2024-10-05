@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DestroyRef, inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { LoginResponse } from '../interfaces/login-response';
+import { AuthResponse } from '../interfaces/auth-response';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
@@ -16,14 +16,14 @@ export class AuthService {
 
   private readonly _apiUrl : string = environment.api_url;
 
-  public logIn(email : string, password : string): Observable<LoginResponse>{
+  public logIn(email : string, password : string): Observable<AuthResponse>{
     const body = { email, password };
     const apiBaseUrl : string = `${this._apiUrl}/auth/login`;
 
-    return this._httpClient.post<LoginResponse>(apiBaseUrl, body )
+    return this._httpClient.post<AuthResponse>(apiBaseUrl, body )
     .pipe(
       takeUntilDestroyed(this._destroyRef),
-      map((resp : LoginResponse)=> resp ),
+      map((resp : AuthResponse)=> resp ),
       catchError( (error: HttpErrorResponse)=> throwError( ()=> error.error) )
     )
   }
