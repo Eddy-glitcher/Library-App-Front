@@ -1,0 +1,57 @@
+<section class="register">
+
+  <div class="register__container">
+
+    <div class="register__logo">
+      <app-logo [logoWidth]="'150px'" [logoHeight]="'110px'" [textSize]="'34px'" [title]="'REGISTRO'"></app-logo>
+    </div>
+
+    <div class="register__form">
+      <form class="register__form-container" action="" autocomplete="off" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+
+          <div class="register__form-inputs">
+            <label class="register__form-label" for="name">
+              <input class="register__form-input" type="text" id='name' placeholder=" " formControlName="name">
+              <span class="register__form-text" [ngClass]="formValidator('name') ? 'register__form-text--error' : '' " >Nombre</span>
+              <span class="register__form-bar" [ngClass]="formValidator('name') ? 'register__form-bar--error' : ''"></span>
+
+              @if (formValidator('name')) { <span class="register__form-error-text">{{formFieldValidator('name')}}</span> }
+            </label>
+
+            <label class="register__form-label" for="email">
+              <input class="register__form-input" type="email" id='email' placeholder=" " formControlName="email">
+              <span class="register__form-text" [ngClass]="formValidator('email') ? 'register__form-text--error' : '' " >Correo</span>
+              <span class="register__form-bar" [ngClass]="formValidator('email') ? 'register__form-bar--error' : ''"></span>
+
+              @if (formValidator('email')) { <span class="register__form-error-text">{{formFieldValidator('email')}}</span> }
+            </label>
+
+            <label class="register__form-label" for="password">
+              <input class="register__form-input" type="password" id='password' placeholder=" " formControlName="password">
+              <span class="register__form-text" [ngClass]="formValidator('password') ? 'register__form-text--error' : '' " >Contraseña</span>
+              @if (showPasswordIcon('password')) { <i class="fa-regular fa-eye-slash register__form-password-icon" (click)="showPassword('password', $event)"></i> }
+              <span class="register__form-bar" [ngClass]="formValidator('password') ? 'register__form-bar--error' : ''"></span>
+
+              @if (formValidator('password')) { <span class="register__form-error-text">{{formFieldValidator('password')}}</span> }
+            </label>
+
+            <label class="register__form-label" for="confirm_password">
+              <input class="register__form-input" type="password" id='confirm_password' placeholder=" " formControlName="confirm_password">
+              <span class="register__form-text" [ngClass]="formValidator('confirm_password') ? 'register__form-text--error' : '' ">Confirmar Contraseña</span>
+
+              @if (showPasswordIcon('confirm_password')) { <i class="fa-regular fa-eye-slash register__form-password-icon" (click)="showPassword('confirm_password', $event)"></i> }
+              <span class="register__form-bar" [ngClass]="formValidator('confirm_password') ? 'register__form-bar--error' : ''"></span>
+
+              @if (formValidator('confirm_password')) { <span class="register__form-error-text">{{formFieldValidator('confirm_password')}}</span> }
+            </label>
+
+          </div>
+        <input type="submit" class="register__form-button" value="Crear Cuenta">
+      </form>
+
+      <span class="register__form-helper-text">¿Ya tienes una cuenta?...<a [routerLink]="['/auth/login']" routerLinkActive="router-link-active" >Iniciar Sesión</a></span>
+
+    </div>
+
+  </div>
+</section>

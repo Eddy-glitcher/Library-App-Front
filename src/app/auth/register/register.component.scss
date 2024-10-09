@@ -1,0 +1,163 @@
+@import '../../styles/themes/index.scss';
+@import '../../styles/mixins/index.scss';
+@import '../../styles/typography/index.scss';
+
+.register{
+  background: var(--primary-background-gradient);
+  width: 100%;
+  height: 100vh;
+  overflow-x: auto;
+  @include flex-layout($direction: column, $align: center);
+
+  .register__container{
+    min-width: 240px;
+    max-width: 390px;
+  }
+
+  .register__logo{
+    @include flex-layout($direction: column);
+    text-align: center;
+  }
+
+  .register__form{
+    padding: 20px;
+    margin: 0px auto;
+    text-align: center;
+    @include grid-layout($gap : 15px);
+
+    .register__form-container, .register__form-inputs{
+      @include grid-layout($gap : 15px);
+    }
+
+    .register__form-inputs{
+      @include grid-layout($columns : repeat(auto-fit), $gap : 20px);
+    }
+
+    .register__form-label{
+      width: 100%;
+      position: relative;
+      display: grid;
+      grid-template-areas: "input";
+    }
+
+    .register__form-input{
+      font-size: clamp( $font-size-sm , 0.5rem + 1.6vw, $font-size-md);
+      width: 100%;
+      grid-area: input;
+      padding: 15px 35px 15px 15px;
+      border: none;
+      transition: border 100ms ease-in-out;
+      background-color: transparent;
+      transition: all 300ms;
+      outline: none;
+    }
+
+    .register__form-bar{
+      @include form-bar-animation($color : var(--secondary-color), $color-animation : var(--tertiary-color) );
+    }
+
+    .register__form-input:focus ~ .register__form-bar:before,
+    .register__form-input:focus ~ .register__form-bar:after {
+      width: 50%;
+    }
+
+    .register__form-bar--error{
+      background-color: var(--color-error);
+    }
+
+    .register__form-bar--error:before, .register__form-bar--error:after{
+      background-color: var(--color-red);
+    }
+
+    .register__form-input:focus ~ .register__form-bar--error:before,
+    .register__form-input:focus ~ .register__form-bar--error:after {
+      width: 0%;
+    }
+
+    .register__form-text{
+      color: var(--secondary-color);
+      grid-area: input;
+      @include flex-layout();
+      margin-left: 10px;
+      width: max-content;
+      cursor: text;
+      font-size: clamp( $font-size-md , 0.5rem + 1.6vw, $font-size-lg);
+      transform-origin: left center;
+      transition: transform 300ms ease-in-out;
+    }
+
+    .register__form-input:focus + .register__form-text,
+    .register__form-input:not(:placeholder-shown) + .register__form-text{
+      transform: translateY(-50%) scale(.9);
+    }
+
+    .register__form-password-icon{
+      cursor: pointer;
+      grid-area: input;
+      display: flex;
+      justify-self: end;
+      margin: auto 0px;
+      width: max-content;
+      height: max-content;
+      font-size: clamp($font-size-sm, 0.87rem + 0.416vw, $font-size-md);
+      color: var(--secondary-color-soft);
+      transition: transform 100ms ease-in-out;
+
+      &:hover{
+        opacity: 0.7;
+      }
+
+      &:active{
+        transform: scale(0.9);
+      }
+
+    }
+
+    .register__form-text--error{
+      color: var(--color-error);
+    }
+
+    .register__form-error-text{
+      font-size: clamp($font-size-sm, 0.87rem + 0.416vw, $font-size-md);
+      color: var(--color-error);
+      text-align: left;
+      margin: 5px 0px 0px 5px;
+      position: relative;
+    }
+
+    .register__form-button{
+      background-color: var(--secondary-color);
+      color: var(--color-white);
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: clamp($font-size-sm, 0.87rem + 0.416vw, $font-size-md);
+      transition: transform 100ms ease-in-out;
+
+      &:hover{
+        opacity: 0.9;
+        cursor: pointer;
+      }
+
+      &:active{
+        transform: scale(0.9);
+      }
+    }
+
+    .register__form-helper-text{
+      font-size: clamp($font-size-sm, 0.87rem + 0.416vw, $font-size-md);
+
+      a{
+        color: var(--secondary-color);
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+
+  }
+}

@@ -1,0 +1,17 @@
+.light-theme{
+  --color-black : #060606;
+  --color-white : #FFFFFF;
+  --color-grey  : #919191;
+  --color-url   : #27019B;
+  --color-error : rgba(172, 18, 18, 70%);
+
+  --primary-color    :#7F9CD5;
+  --secondary-color  :rgba(40,12,90, 87%);
+  --secondary-color-soft : rgba(40, 12, 90, 40%);
+  --tertiary-color   : #C6E3FF;
+  --quaternary-color : #F0F8FF;
+  --quaternary-color-medium : rgba(224, 240, 254, 90%);
+  --primary-background-gradient   : linear-gradient(180deg, rgba(127,156,213,1) 0%, rgba(134,168,231,0.7) 50%, rgba(145,234,228,0.2) 100%);
+  --secondary-background-gradient : linear-gradient(180deg, rgba(127,156,213,1) 0%, rgba(134,168,231,0.7) 50%, rgba(145,234,228,0.2) 100%);
+  --tertiary-background-gradient  : linear-gradient(180deg, rgba(124,190,255,1) 0%, rgba(40,12,90,0.35) 100%);
+}

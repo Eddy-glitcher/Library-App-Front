@@ -1,0 +1,13 @@
+@mixin grid-layout($columns : auto, $rows : auto, $gap : 1rem){
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+
+@mixin flex-layout($direction : auto, $justify: center, $align : center){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
