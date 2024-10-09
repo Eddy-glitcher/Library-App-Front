@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DestroyRef, inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { AuthResponse } from '../interfaces/auth-response';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -28,4 +28,16 @@ export class AuthService {
     )
   }
 
+  public register(name : string, email : string, password : string): Observable<AuthResponse>{
+    const apiBaseUrl : string = `${this._apiUrl}/auth/register`;
+
+    const body = {name, email, password};
+
+    return this._httpClient.post<AuthResponse>(apiBaseUrl, body)
+    .pipe(
+      takeUntilDestroyed(this._destroyRef),
+      map((resp : AuthResponse)=> resp),
+      catchError((error : HttpErrorResponse)=> throwError(()=> error.error))
+    )
+  }
 }

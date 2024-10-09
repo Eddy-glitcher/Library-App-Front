@@ -4,6 +4,10 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validator
 import { FormValidatorService } from '../../shared/services/form-validator.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../shared/services/auth.service';
+import { AuthResponse } from '../../shared/interfaces/auth-response';
+import { ApiErrorResponse } from '../../shared/interfaces/api-error-response';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -16,16 +20,17 @@ export class RegisterComponent {
 
   private _renderer   = inject(Renderer2);
   private _elementRef = inject(ElementRef);
+  private _authSvc    = inject(AuthService);
   private _showPassword!: boolean;
 
   private _formBuilder      = inject(FormBuilder);
   private _formValidatorSvc = inject(FormValidatorService);
 
   registerForm: FormGroup = this._formBuilder.group({
-    name     : ['', Validators.required],
-    email    : ['', [Validators.required, Validators.pattern(this._formValidatorSvc.validEmail)]],
-    password : ['', [Validators.required, Validators.minLength(8)]],
-    confirm_password : ['', Validators.required]
+    name     : ['example', Validators.required],
+    email    : ['example@gmail.com', [Validators.required, Validators.pattern(this._formValidatorSvc.validEmail)]],
+    password : ['12345678', [Validators.required, Validators.minLength(8)]],
+    confirm_password : ['12345678', Validators.required]
   },{
     validators : this._formValidatorSvc.formEqualPasswordsValidator('password', 'confirm_password')
   });
@@ -59,8 +64,21 @@ export class RegisterComponent {
   }
 
   registerUser(){
-    
-    if(this.registerForm.invalid) this.registerForm.markAllAsTouched();
+    this.registerForm.markAllAsTouched();
+
+    const { name, email, password} = this.registerForm.value;
+
+    this._authSvc.register(name, email, password).subscribe({
+      next : (resp : AuthResponse)=>{
+        // Redirect to...
+        console.log("Redirect..: ", resp);
+      },
+      error : (error : ApiErrorResponse)=>{
+
+        console.log("Error::", error);
+        //Show screen error...
+      }
+    })
 
   }
 }
