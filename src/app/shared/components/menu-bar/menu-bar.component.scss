@@ -11,8 +11,8 @@
     button{
       background: none;
       border: none;
-      outline: none;
       cursor: pointer;
+      outline: none;
     }
 
     i{
@@ -33,35 +33,35 @@
     }
 
     .sidebar__header{
+      @include flex-layout($justify : space-between);
       padding: 5px 10px;
       background-color: var(--primary-color);
-      @include flex-layout($justify : space-between);
 
       .sidebar__header-user-image{
+        @include image-size($width : 55px, $height: 55px);
         border: solid 2px var(--color-white);
         box-sizing: border-box;
         border-radius: 100%;
         overflow: hidden;
-        @include image-size($width : 55px, $height: 55px);
       }
     }
 
     .sidebar__body{
-      overflow: hidden;
+      @include flex-layout($direction: column, $justify: flex-start);
       position: absolute;
       top: 0;
-      transition: left 300ms ease-in-out;
-      background: var(--primary-background-gradient);
+      gap: 15px;
       width: 100%;
       max-width: 360px;
       height: 100vh;
-      @include flex-layout($direction: column, $justify: flex-start);
-      gap: 15px;
+      overflow: hidden;
+      transition: left 300ms ease-in-out;
+      background: var(--primary-background-gradient);
 
       .sidebar__menu-button{
-        padding: 15px 10px;
-        width: 100%;
         @include flex-layout($justify: flex-end);
+        width: 100%;
+        padding: 15px 10px;
       }
 
       .sidebar__user-profile{
@@ -70,7 +70,7 @@
         gap: 15px;
 
         .sidebar__profile-picture{
-        @include image-size($width : 80px, $height: 80px);
+          @include image-size($width : 80px, $height: 80px);
           overflow: hidden;
           border: solid 2px var(--tertiary-color);
           box-sizing: border-box;
@@ -78,8 +78,8 @@
         }
 
         .sidebar__profile-name{
-          font-size: clamp( $font-size-sm , $font-size-lg , $font-size-xl);
           color: var(--secondary-color);
+          font-size: clamp( $font-size-sm , $font-size-lg , $font-size-xl);
 
           &:hover{
             cursor: pointer;
@@ -107,8 +107,8 @@
           transition: background-color 100ms ease-in;
 
           &:hover{
-            background-color: var(--tertiary-color);
             cursor: pointer;
+            background-color: var(--tertiary-color);
           }
 
           span{
@@ -118,16 +118,16 @@
       }
 
       .sidebar__dropdown{
+        position: relative;
+        padding: 5px 0px;
+        width: 100%;
         background-color: var(--tertiary-color);
         color: var(--color-black);
-        width: 100%;
-        padding: 5px 0px;
-        position: relative;
 
         .sidebar__dropdown-select{
-          width: 100%;
           @include flex-layout($justify: space-between);
           padding: 10px;
+          width: 100%;
           cursor: pointer;
           font-size: clamp( $font-size-sm , $font-size-md , $font-size-md);
 
@@ -151,22 +151,22 @@
         }
 
         .sidebar__dropdown-menu{
-          list-style: none;
-          background: var(--tertiary-color);
-          color: var(--color-grey);
           width: 100%;
           height: 0px;
-          overflow: hidden;
+          background: var(--tertiary-color);
+          color: var(--color-grey);
           opacity: 0;
+          overflow: hidden;
+          list-style: none;
           transition: opacity 300ms ease-in-out;
 
           li{
-            background-color: var(--quaternary-color);
-            padding: 10px;
-            margin: 5px;
-            border-radius: 10px;
-            cursor: pointer;
             @include flex-layout($justify: space-between);
+            background-color: var(--quaternary-color);
+            border-radius: 10px;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
 
             &:hover{
               opacity: 0.9;
@@ -181,20 +181,20 @@
       }
 
       .sidebar__logout{
-        width: 100%;
+        @include flex-layout();
         position: relative;
         margin-top: auto;
-        @include flex-layout();
+        width: 100%;
 
         .sidebar__logout-button{
           position: absolute;
           top: 50%;
-          z-index: 1;
           font-size: clamp( $font-size-sm , $font-size-lg , $font-size-md);
+          z-index: 1;
 
           &:hover{
-            text-decoration: underline;
             cursor: pointer;
+            text-decoration: underline;
           }
 
           span{
@@ -203,9 +203,9 @@
         }
 
         .sidebar__logout-wave{
-          z-index: 0;
           width: 100%;
           fill : var(--tertiary-color);
+          z-index: 0;
         }
       }
 
