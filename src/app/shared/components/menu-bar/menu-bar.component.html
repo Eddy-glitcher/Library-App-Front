@@ -1,0 +1,76 @@
+<section class="sidebar" #sidemenu>
+  <section class="sidebar__header">
+    <div class="sidebar__menu-button">
+      <button class="sidebar__toggle" (click)="isMenuBarActive = !isMenuBarActive">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <div class="sidebar__header-logo">
+      <app-logo [logoWidth]="'55px'" [logoHeight]="'55px'" [textSize]="'16px'"></app-logo>
+    </div>
+    <div class="sidebar__header-user-image">
+      <picture>
+        <img src="https://res.cloudinary.com/ddg5pjlg1/image/upload/v1710125577/qcvgnrtlvf1yqo2vkbb8.jpg" alt="User image">
+      </picture>
+    </div>
+  </section>
+
+  <section class="sidebar__body" [ngClass]="isMenuBarActive ? 'show__sidebar' : 'hide__sidebar'">
+    <div class="sidebar__menu-button">
+      <button class="sidebar__toggle" (click)="isMenuBarActive = !isMenuBarActive">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="sidebar__user-profile">
+      <div class="sidebar__profile-picture">
+        <picture>
+          <img src="https://res.cloudinary.com/ddg5pjlg1/image/upload/v1710125577/qcvgnrtlvf1yqo2vkbb8.jpg" alt="User image">
+        </picture>
+      </div>
+
+      <div class="sidebar__profile-info">
+        <h2 class="sidebar__profile-name">Lil Peep</h2>
+        <span class="sidebar__profile-email">lilpeep4ever.com</span>
+      </div>
+    </div>
+
+    <nav class="sidebar__navigation">
+      <ul class="sidebar__navigation-list">
+        <li class="sidebar__navigation-item"><i class="fa-solid fa-house"></i><span>Inicio</span></li>
+        <li class="sidebar__navigation-item"><i class="fa-solid fa-user"></i><span>Mi perfil</span></li>
+        <li class="sidebar__navigation-item"><i class="fa-solid fa-feather"></i><span>Autores</span></li>
+        <li class="sidebar__navigation-item"><i class="fa-solid fa-book"></i><span>Tus Libros</span></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__dropdown">
+      <div class="sidebar__dropdown-select" (click)="isThemeSelectorActive = !isThemeSelectorActive">
+        <i class="fa-solid fa-palette"></i>
+        <span #activeTheme> {{selectedTheme}} </span>
+        <i class="fa-solid fa-angle-down" [ngClass]="isThemeSelectorActive ? 'fa-angle-down-rotate' : ''"></i>
+      </div>
+
+      <ul class="sidebar__dropdown-menu" [ngClass]="isThemeSelectorActive ? 'sidebar__dropdown-menu--toggle' : ''">
+        @for (theme of themes; track $index) {
+          <li class="active" (click)="selectTheme(theme.value)">{{theme.value}}
+            @if (selectedTheme == theme.value) {
+              <i class="fa-solid fa-check"></i>
+            }
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="sidebar__logout">
+      <button class="sidebar__logout-button">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Cerrar Sesión</span>
+      </button>
+
+      <svg class="sidebar__logout-wave" viewBox="0 0 320 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 4.33011L8.8 7.39195C17.8667 10.4538 35.4667 16.5775 53.3333 18.1084C71.2 19.6393 88.8 16.5775 106.667 13.5157C124.533 10.4538 142.133 7.39195 160 4.33011C177.867 1.26826 195.467 -1.79359 213.333 1.26826C231.2 4.33011 248.8 13.5157 266.667 18.1084C284.533 22.7012 302.133 22.7012 311.2 22.7012H320V87H311.2C302.133 87 284.533 87 266.667 87C248.8 87 231.2 87 213.333 87C195.467 87 177.867 87 160 87C142.133 87 124.533 87 106.667 87C88.8 87 71.2 87 53.3333 87C35.4667 87 17.8667 87 8.8 87H0V4.33011Z"/>
+      </svg>
+    </div>
+  </section>
+</section>
