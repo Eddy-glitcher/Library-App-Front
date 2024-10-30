@@ -1,0 +1,220 @@
+  @import '../../../styles/themes/index.scss';
+  @import '../../../styles/mixins/index.scss';
+  @import '../../../styles/typography/index.scss';
+
+  .sidebar{
+
+    img{
+      object-fit: cover;
+    }
+
+    button{
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+    }
+
+    i{
+      color: var(--secondary-color);
+    }
+
+    .sidebar__toggle{
+      font-size: clamp($font-size-lg, $font-size-xl + 10px, $font-size-xl + 10px);
+      transition: scale 200ms ease-in-out;
+
+      &:active{
+        transform: scale(0.9);
+      }
+
+      i{
+        color: var(--quaternary-color);
+      }
+    }
+
+    .sidebar__header{
+      @include flex-layout($justify : space-between);
+      padding: 5px 10px;
+      background-color: var(--primary-color);
+
+      .sidebar__header-user-image{
+        @include image-size($width : 55px, $height: 55px);
+        border: solid 2px var(--color-white);
+        box-sizing: border-box;
+        border-radius: 100%;
+        overflow: hidden;
+      }
+    }
+
+    .sidebar__body{
+      @include flex-layout($direction: column, $justify: flex-start);
+      position: absolute;
+      top: 0;
+      gap: 15px;
+      width: 100%;
+      max-width: 360px;
+      height: 100vh;
+      overflow: hidden;
+      transition: left 300ms ease-in-out;
+      background: var(--primary-background-gradient);
+
+      .sidebar__menu-button{
+        @include flex-layout($justify: flex-end);
+        width: 100%;
+        padding: 15px 10px;
+      }
+
+      .sidebar__user-profile{
+        @include flex-layout();
+        flex-wrap: wrap;
+        gap: 15px;
+
+        .sidebar__profile-picture{
+          @include image-size($width : 80px, $height: 80px);
+          overflow: hidden;
+          border: solid 2px var(--tertiary-color);
+          box-sizing: border-box;
+          border-radius: 100%;
+        }
+
+        .sidebar__profile-name{
+          color: var(--secondary-color);
+          font-size: clamp( $font-size-sm , $font-size-lg , $font-size-xl);
+
+          &:hover{
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+
+        .sidebar__profile-email{
+          color: var(--color-black);
+          font-size: clamp( $font-size-sm , $font-size-sm , $font-size-md);
+        }
+      }
+
+      .sidebar__navigation{
+        width: 100%;
+
+        .sidebar__navigation-list{
+          list-style: none;
+        }
+
+        .sidebar__navigation-item{
+          width: 100%;
+          padding:  10px 0px 10px 15px;
+          font-size: clamp( $font-size-sm , $font-size-lg , $font-size-md);
+          transition: background-color 100ms ease-in;
+
+          &:hover{
+            cursor: pointer;
+            background-color: var(--tertiary-color);
+          }
+
+          span{
+            margin-left: 10px;
+          }
+        }
+      }
+
+      .sidebar__dropdown{
+        position: relative;
+        padding: 5px 0px;
+        width: 100%;
+        background-color: var(--tertiary-color);
+        color: var(--color-black);
+
+        .sidebar__dropdown-select{
+          @include flex-layout($justify: space-between);
+          padding: 10px;
+          width: 100%;
+          cursor: pointer;
+          font-size: clamp( $font-size-sm , $font-size-md , $font-size-md);
+
+          &:hover{
+            opacity: 0.9;
+          }
+
+          span{
+            margin-left: 10px;
+          }
+
+          .fa-angle-down{
+            margin-left: auto;
+            transition: transform 300ms ease-in-out;
+          }
+
+          .fa-angle-down-rotate{
+            transform: rotate(180deg);
+          }
+
+        }
+
+        .sidebar__dropdown-menu{
+          width: 100%;
+          height: 0px;
+          background: var(--tertiary-color);
+          color: var(--color-grey);
+          opacity: 0;
+          overflow: hidden;
+          list-style: none;
+          transition: opacity 300ms ease-in-out;
+
+          li{
+            @include flex-layout($justify: space-between);
+            background-color: var(--quaternary-color);
+            border-radius: 10px;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+
+            &:hover{
+              opacity: 0.9;
+            }
+          }
+        }
+
+        .sidebar__dropdown-menu--toggle{
+          opacity: 1;
+          height : auto;
+        }
+      }
+
+      .sidebar__logout{
+        @include flex-layout();
+        position: relative;
+        margin-top: auto;
+        width: 100%;
+
+        .sidebar__logout-button{
+          position: absolute;
+          top: 50%;
+          font-size: clamp( $font-size-sm , $font-size-lg , $font-size-md);
+          z-index: 1;
+
+          &:hover{
+            cursor: pointer;
+            text-decoration: underline;
+          }
+
+          span{
+            margin-left: 10px;
+          }
+        }
+
+        .sidebar__logout-wave{
+          width: 100%;
+          fill : var(--tertiary-color);
+          z-index: 0;
+        }
+      }
+
+      &.show__sidebar{
+        left: 0;
+      }
+
+      &.hide__sidebar{
+        left: -100%;
+      }
+    }
+  }
