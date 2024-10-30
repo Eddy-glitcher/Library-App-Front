@@ -20,9 +20,13 @@ export class AuthService {
 
   private readonly _currentUser = signal<User|null>(null);
   public currentUser = computed(()=> this._currentUser());
+  
+  private readonly _authStatus = signal<AuthStatus>(AuthStatus.checking);
+  public readonly authStatus = computed(()=> this._authStatus());
 
   private _setAuthentication(user : User, token : string){
     this._currentUser.set(user);
+    this._authStatus.set(AuthStatus.authenticated);
     localStorage.setItem('token', token);
 
     return true;
